@@ -1,0 +1,28 @@
+---
+driver:
+  name: hyperv
+  parent_vhd_folder: C:\HyperV Resources
+  parent_vhd_name: BaseBox1.vhdx
+  vm_switch: ExternalSwitch
+  memory_startup_bytes: 2GB
+
+provisioner:
+  name: chef_zero
+
+transport:
+  password: H0rnyBunny
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: windows-2012r2
+
+suites:
+  - name: default
+    run_list:
+      - recipe[azurex2::default]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+    attributes:
