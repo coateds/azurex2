@@ -1,22 +1,29 @@
 ---
 driver:
-  name: hyperv
-  parent_vhd_folder: C:\HyperV Resources
-  parent_vhd_name: BaseBox1.vhdx
-  vm_switch: ExternalSwitch
-  memory_startup_bytes: 2GB
+  name: azurerm
+
+driver_config:
+  subscription_id: '829eeca2-0445-402d-bf81-4d00f1093c64'
+  location: 'West US'
+  machine_size: 'Standard_D1'
 
 provisioner:
   name: chef_zero
 
 transport:
-  password: H0rnyBunny
+  ssh_key: ~/.ssh/id_kitchen-azurerm
 
 verifier:
   name: inspec
 
 platforms:
-  - name: windows-2012r2
+  - name: ubuntu-16.04
+    driver_config:
+      image_urn: Canonical:UbuntuServer:16.04-LTS:latest
+      vm_name: azurex2
+      vm_tags:
+        ostype: linux
+        distro: ubuntu
 
 suites:
   - name: default

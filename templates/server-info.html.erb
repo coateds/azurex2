@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+  </head>
+  <body>
+    <h2>Server Properties</h2>
+    <br>
+    <table border="1" width="60%">
+      <tbody>
+        <tr>
+          <td>Platform</td>
+          <td><%= node['platform'] %></td>
+        </tr>
+        <tr>
+          <td>Platform Version</td>
+          <td><%= node['platform_version'] %></td>
+        </tr>
+        <tr>
+          <td>Platform Family</td>
+          <td><%= node['platform_family'] %></td>
+        </tr>
+        <tr>
+          <td>IP Address</td>
+          <td><%= node['ipaddress'] %></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
