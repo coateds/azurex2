@@ -70,3 +70,28 @@ end
 template '/var/www/html/server-info.html' do
   source 'server-info.html.erb'
 end
+
+#### A couple of blocks for appending a line if it does not exist
+#### All three append the line
+#### The last one seems to be idempotent
+#bash "insert_line" do
+#user "root"
+#code <<-EOS
+#echo "172.22.0.47    www.example.com" >> /etc/hosts
+#EOS
+#not_if "grep -q www.example.com /etc/hosts"
+#end
+
+#ruby_block "insert_line" do
+#block do
+#file = Chef::Util::FileEdit.new("/etc/hosts")
+#file.insert_line_if_no_match("/www.example.com/", "www.example.com")
+#file.write_file
+#end
+#end
+
+line = '127.1.1.1 gateway.internal gateway'
+file = Chef::Util::FileEdit.new('/etc/hosts')
+file.insert_line_if_no_match(/#{line}/, line)
+file.write_file
+#### /append line
