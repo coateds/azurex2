@@ -15,7 +15,7 @@ describe 'azurex2::default' do
       runner.converge(described_recipe)
     end
 
-    it 'installs net-tools' do
+    it 'installs samba' do
       expect(chef_run).to install_package('samba')
     end
 

@@ -5,8 +5,9 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
 # The samba package does not seem to want to install without fetching updates first
-apt_update
-package 'samba'
+#apt_update
+#package 'samba'
+include_recipe 'install-samba::default'
 
 # This is the brute force way to install three packages
 # package 'net-tools'
@@ -90,8 +91,8 @@ end
 #end
 #end
 
-line = '127.1.1.1 gateway.internal gateway'
-file = Chef::Util::FileEdit.new('/etc/hosts')
-file.insert_line_if_no_match(/#{line}/, line)
-file.write_file
+#line = 'samba'
+#file = Chef::Util::FileEdit.new('/etc/hosts')
+#file.insert_line_if_no_match(/#{line}/, line)
+#file.write_file
 #### /append line
