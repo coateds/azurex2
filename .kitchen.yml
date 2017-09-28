@@ -5,7 +5,8 @@ driver:
 driver_config:
   subscription_id: '829eeca2-0445-402d-bf81-4d00f1093c64'
   location: 'West US'
-  machine_size: 'Standard_D1'
+  # machine_size: 'Standard_D1'
+  machine_size: 'Standard_A1'
 
 provisioner:
   name: chef_zero
